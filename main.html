@@ -185,18 +185,23 @@
    <!-- Main JavaScript -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Initialize Ripples.js on the ripple container
         if (typeof $.fn.ripples !== 'undefined') {
             $('.ripple-container').ripples({
-                resolution: 752,
-                dropRadius: 5,
-                perturbance: 0.04,
-                interactive: false, // Disable default interaction to prevent click-based ripples
+                resolution: 1000,
+                dropRadius: 3,
+                perturbance: 0.2,
+                interactive: false,
             });
-
-            // Add ripples following the mouse
+    
+            let lastRippleTime = 0;
+            const rippleDelay = 125;
+    
             $(document).on('mousemove', function (e) {
-                $('.ripple-container').ripples('drop', e.pageX, e.pageY, 20, 0.04);
+                const currentTime = new Date().getTime();
+                if (currentTime - lastRippleTime > rippleDelay) {
+                    $('.ripple-container').ripples('drop', e.pageX, e.pageY, 10, 0.04);
+                    lastRippleTime = currentTime;
+                }
             });
         } else {
             console.error("Ripples.js is not loaded correctly.");
