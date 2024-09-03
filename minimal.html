@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ripple Test with Embedded Ripples</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+
+        .horizontal-scroll-container {
+            display: flex;
+            overflow-x: auto;
+            height: 100vh;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            white-space: nowrap;
+        }
+
+        .scroll-section {
+            min-width: 100vw;
+            height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: white;
+            position: relative; /* Make it a containing block */
+        }
+
+        /* Background colors for visibility */
+        .scroll-section:nth-child(1) {
+            background-color: #000000;
+        }
+        .scroll-section:nth-child(2) {
+            background-color: #214221;
+        }
+        .scroll-section:nth-child(3) {
+            background-color: #121247;
+        }
+
+        /* Ripple container inside each scroll section */
+        .ripple-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1; /* Ensure ripple effect is behind content */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Horizontal Scrolling Sections -->
+    <div class="horizontal-scroll-container">
+        <section class="scroll-section">
+            <div class="ripple-container" id="ripple-1"></div>
+            Test Section 1
+        </section>
+        <section class="scroll-section">
+            <div class="ripple-container" id="ripple-2"></div>
+            Test Section 2
+        </section>
+        <section class="scroll-section">
+            <div class="ripple-container" id="ripple-3"></div>
+            Test Section 3
+        </section>
+    </div>
+
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Include Ripples.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Initialize Ripples.js on each ripple container
+            $('.ripple-container').ripples({
+                resolution: 256,
+                dropRadius: 20,
+                perturbance: 0.04
+            });
+
+            // Manually trigger ripples for testing
+            setTimeout(function () {
+                $('#ripple-1').ripples('drop', $('#ripple-1').width() / 2, $('#ripple-1').height() / 2, 20, 0.04);
+                $('#ripple-2').ripples('drop', $('#ripple-2').width() / 2, $('#ripple-2').height() / 2, 20, 0.04);
+                $('#ripple-3').ripples('drop', $('#ripple-3').width() / 2, $('#ripple-3').height() / 2, 20, 0.04);
+            }, 1000);
+        });
+    </script>
+
+</body>
+</html>

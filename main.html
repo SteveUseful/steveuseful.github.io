@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ripple Effect with Scrolling</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Logo in the Top Left Corner -->
+    <div class="logo-top-left">
+        <img src="assets/images/logo1.png" alt="Logo">
+    </div>
+
+    <!-- About Link in the Top Right Corner -->
+    <a href="#" class="about-link">About</a>
+
+    <!-- Ripple Effect Container -->
+    <div class="ripple-container"></div>
+
+    <!-- Horizontal Scrolling Sections -->
+    <div class="horizontal-scroll-container">
+        <section class="scroll-section" id="section-1">
+            <!-- Centered Glowing Logo -->
+            <div class="logo-center">
+                <img src="assets/images/logo1.png" alt="Glowing Logo">
+            </div>
+
+            <div class="video-background">
+                <video autoplay muted loop playsinline>
+                    <source src="assets/videos/water5.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="text-content">
+                <div class="sub-title">We are <span class="highlight">Your Brand</span></div>
+                <h1 class="main-title">Your Catchy Tagline <br> Towards Amazing Projects</h1>
+                <p>Explore my projects, blog, and more by scrolling horizontally.</p>
+                <div class="scroll-hint">
+                    <span>&larr; Scroll Left or Right &rarr;</span>
+                </div>
+            </div>
+             <!-- Add the squiggly-line video here 
+            <div class="squiggly-line">
+             <video autoplay muted loop playsinline>
+            <source src="assets/videos/smoke.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+             </video>
+    </div> -->
+            
+        </section>
+
+        <section class="scroll-section" id="section-2">
+            <h2>My GitHub Projects</h2>
+            
+            <!-- Card Container for GitHub Projects -->
+            <div class="card-container">
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="card-video">
+                        <video autoplay muted loop playsinline>
+                            <source src="path-to-your-video1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="card-content">
+                        <h3>My Website Project</h3>
+                        <p>Full Website Project on Git Repo</p>
+                        <a href="https://github.com/SteveUseful/steveuseful.github.io" target="_blank">View on GitHub</a>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="card">
+                    <div class="card-video">
+                        <video autoplay muted loop playsinline>
+                            <source src="path-to-your-video2.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="card-content">
+                        <h3>NLP Model Training</h3>
+                        <p>Churn Prediction and Performance</p>
+                        <a href="https://github.com/SteveUseful/model_training" target="_blank">View on GitHub</a>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="card-video">
+                        <video muted loop playsinline>
+                            <source src="assets/videos/stats.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="card-content">
+                        <h3>Project Title 3</h3>
+                        <p>Short description of Project 3</p>
+                        <a href="#">View on GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="card">
+                    <div class="card-video">
+                        <video muted loop playsinline>
+                            <source src="assets/videos/screens.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="card-content">
+                        <h3>Project Title 3</h3>
+                        <p>Short description of Project 3</p>
+                        <a href="#">View on GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="card">
+                    <div class="card-video">
+                        <video muted loop playsinline>
+                            <source src="assets/videos/phones.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="card-content">
+                        <h3>Project Title 3</h3>
+                        <p>Short description of Project 3</p>
+                        <a href="#">View on GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="card">
+                    <div class="card-video">
+                        <video muted loop playsinline>
+                            <source src="assets/videos/screens.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="card-content">
+                        <h3>Project Title 3</h3>
+                        <p>Short description of Project 3</p>
+                        <a href="#">View on GitHub</a>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+        
+        
+
+
+
+
+        <section class="scroll-section">Section 3</section>
+        <section class="scroll-section">Section 4</section>
+    </div>
+
+    <!-- Footer Left with Drag to Explore and Links -->
+    <div class="footer-left">
+        <div class="drag-to-explore">
+            Click & Drag to Explore
+        </div>
+        <div>
+            <a href="#">Privacy Policy</a> |
+            <a href="mailto:steveuseful@gmail.com">steveuseful@gmail.com</a>
+        </div>
+    </div>
+
+    <!-- Squiggly Line in Bottom Right -->
+    <div class="squiggly-line"></div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Ripples.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+
+   <!-- Main JavaScript -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Initialize Ripples.js on the ripple container
+        if (typeof $.fn.ripples !== 'undefined') {
+            $('.ripple-container').ripples({
+                resolution: 752,
+                dropRadius: 5,
+                perturbance: 0.04,
+                interactive: false, // Disable default interaction to prevent click-based ripples
+            });
+
+            // Add ripples following the mouse
+            $(document).on('mousemove', function (e) {
+                $('.ripple-container').ripples('drop', e.pageX, e.pageY, 20, 0.04);
+            });
+        } else {
+            console.error("Ripples.js is not loaded correctly.");
+        }
+
+        // Horizontal Scroll Functionality
+        const container = document.querySelector('.horizontal-scroll-container');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        // Reset dragging state when mouse is released anywhere on the page
+        window.addEventListener('mouseup', () => {
+            isDown = false;
+            container.classList.remove('active');
+        });
+
+        if (container) {
+            // Mouse down event to start dragging
+            container.addEventListener('mousedown', (e) => {
+                isDown = true;
+                startX = e.pageX - container.offsetLeft;
+                scrollLeft = container.scrollLeft;
+                container.classList.add('active');
+            });
+
+            // Mouse leave event to stop dragging
+            container.addEventListener('mouseleave', () => {
+                isDown = false;
+                container.classList.remove('active');
+            });
+
+            // Mouse move event to handle dragging
+            container.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - container.offsetLeft;
+                const walk = (x - startX) * 2; // Adjust scrolling speed
+                container.scrollLeft = scrollLeft - walk;
+            });
+
+            // Carousel logic: Check position on mouse up
+            container.addEventListener('mouseup', () => {
+                const containerWidth = container.clientWidth;
+                const totalScrollWidth = container.scrollWidth;
+                const scrollPosition = container.scrollLeft;
+
+                // If at the start of Section 1 and scrolling left, jump to Section 4
+                if (scrollPosition <= 0) {
+                    container.scrollTo({
+                        left: totalScrollWidth - containerWidth,
+                        behavior: 'smooth'
+                    });
+                }
+
+                // If at the end of Section 4 and scrolling right, jump to Section 1
+                if (scrollPosition + containerWidth >= totalScrollWidth) {
+                    container.scrollTo({
+                        left: 0,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        }
+
+        // Video hover control for the cards in Section 2
+        const cards = document.querySelectorAll('.card');
+
+        cards.forEach(card => {
+            const video = card.querySelector('video');
+
+            card.addEventListener('mouseenter', () => {
+                video.play();
+            });
+
+            card.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 0; // Optional: Rewind to start
+            });
+        });
+    });
+</script>
+
+
+</body>
+
+</html>
