@@ -183,13 +183,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
 
    <!-- Main JavaScript -->
+<!-- Main JavaScript -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         if (typeof $.fn.ripples !== 'undefined') {
             $('.ripple-container').ripples({
                 resolution: 1000,
-                dropRadius: 3,
-                perturbance: 0.2,
+                dropRadius: 4,
+                perturbance: 0.5,
                 interactive: false,
             });
     
@@ -249,16 +250,13 @@
                 const totalScrollWidth = container.scrollWidth;
                 const scrollPosition = container.scrollLeft;
 
-                // If at the start of Section 1 and scrolling left, jump to Section 4
+                // Check if the scroll position is exactly at the start or end before triggering the carousel
                 if (scrollPosition <= 0) {
                     container.scrollTo({
                         left: totalScrollWidth - containerWidth,
                         behavior: 'smooth'
                     });
-                }
-
-                // If at the end of Section 4 and scrolling right, jump to Section 1
-                if (scrollPosition + containerWidth >= totalScrollWidth) {
+                } else if (scrollPosition + containerWidth >= totalScrollWidth) {
                     container.scrollTo({
                         left: 0,
                         behavior: 'smooth'
@@ -284,6 +282,7 @@
         });
     });
 </script>
+
 
 
 </body>
