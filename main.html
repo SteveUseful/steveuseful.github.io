@@ -124,14 +124,13 @@
                     <textarea id="input-text" class="input-box" placeholder="Enter your text here..."></textarea>
                     <button class="analyze-btn" onclick="analyzeSentiment()">Analyze Sentiment</button>
                 </div>
-
+        
                 <!-- New result display area -->
                 <div id="result-container" class="result-container" style="display: none;">
                     <div id="result" class="result-output">Sentiment will appear here</div>
                 </div>
             </div>
         </section>
-    </div>
 
     <!-- Footer Left with Drag to Explore and Links -->
     <div class="footer-left">
@@ -163,10 +162,10 @@
                     perturbance: 0.5,
                     interactive: false,
                 });
-
+    
                 let lastRippleTime = 0;
                 const rippleDelay = 125;
-
+    
                 $(document).on('mousemove', function (e) {
                     const currentTime = new Date().getTime();
                     if (currentTime - lastRippleTime > rippleDelay) {
@@ -177,34 +176,34 @@
             } else {
                 console.error("Ripples.js is not loaded correctly.");
             }
-
+    
             // Horizontal Scroll Functionality
             const container = document.querySelector('.horizontal-scroll-container');
             let isDown = false;
             let startX;
             let scrollLeft;
-
+    
             window.addEventListener('mouseup', () => {
                 isDown = false;
                 container.classList.remove('active');
             });
-
+    
             if (container) {
                 container.addEventListener('mousedown', (e) => {
                     if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') {
-                        return;
+                        return; // Prevent scrolling if clicking on text area or input
                     }
                     isDown = true;
                     startX = e.pageX - container.offsetLeft;
                     scrollLeft = container.scrollLeft;
                     container.classList.add('active');
                 });
-
+    
                 container.addEventListener('mouseleave', () => {
                     isDown = false;
                     container.classList.remove('active');
                 });
-
+    
                 container.addEventListener('mousemove', (e) => {
                     if (!isDown) return;
                     e.preventDefault();
@@ -212,12 +211,12 @@
                     const walk = (x - startX) * 2; // Adjust scrolling speed
                     container.scrollLeft = scrollLeft - walk;
                 });
-
+    
                 container.addEventListener('mouseup', () => {
                     const containerWidth = container.clientWidth;
                     const totalScrollWidth = container.scrollWidth;
                     const scrollPosition = container.scrollLeft;
-
+    
                     if (scrollPosition <= 0) {
                         container.scrollTo({
                             left: totalScrollWidth - containerWidth,
@@ -229,6 +228,14 @@
                             behavior: 'smooth'
                         });
                     }
+                });
+            }
+    
+            // Prevent scrolling when clicking inside the textarea
+            const inputBox = document.getElementById('input-text');
+            if (inputBox) {
+                inputBox.addEventListener('mousedown', function (event) {
+                    event.stopPropagation();
                 });
             }
 
