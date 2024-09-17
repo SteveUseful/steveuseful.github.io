@@ -83,7 +83,7 @@ body {
 }
 
 /* Video Background Styling */
-#section-1 .video-background {
+.video-background {
     position: absolute;
     top: 0;
     left: 0;
@@ -93,7 +93,7 @@ body {
     z-index: 1; /* Keep it behind the text */
 }
 
-#section-1 .video-background video {
+.video-background video {
     width: 100%; /* Make the video cover the full width */
     height: 100%; /* Ensure the video fills the height as well */
     object-fit: cover;
@@ -109,6 +109,17 @@ body {
     text-align: left; /* Keep text aligned to the left */
     z-index: 2;
 }
+
+#section-2 {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 #section-1 h1 {
     font-size: 3rem; /* Adjust size as needed */
@@ -301,21 +312,24 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    z-index: 2;
+    z-index: 2; /* Cards still above the background */
     position: relative;
-    margin-top: 20px;
+    margin-top: 100px; /* This margin pushes the cards down */
+    align-items: center;
 }
 
 /* Card Style */
 .card {
-    background-color: rgba(51, 51, 51, 0.8);
+    background-color: rgba(154, 165, 162, 0.8);
     border-radius: 10px;
-    width: calc(33.33% - 20px); /* 3 cards per row */
+    width: calc(25% - 20px); /* Make the cards smaller by reducing the percentage */
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
     color: white;
     overflow: hidden;
-    transition: transform 0.3s ease-in-out;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(50px); /* Keep the translate for animation */
+    transition: opacity 8s ease-in-out, transform 8s ease-in-out;
 }
 
 /* Hover Effect */
@@ -362,6 +376,24 @@ body {
     text-decoration: underline;
 }
 
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Slight upward movement for smooth effect */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply fade-in effect to each card */
+
+
+.card.visible {
+    animation: fadeIn 0.8s forwards;
+}
 
 
 
@@ -371,4 +403,172 @@ body {
 #section-2 h2 {
     z-index: 3; /* Ensure heading is above everything else */
     position: relative;
+}
+
+/* Sectyion 3 Styling */
+#section-3, #section-4 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    color: white;
+    overflow: hidden;
+}
+
+/* Heading Styling */
+#section-3, #section-4 h2 {
+    position: relative;
+    margin-bottom: 20px; /* Space below the title */
+    font-size: 3rem;
+    color: black;
+    text-align: center; /* Center the text */
+    z-index: 10;
+}
+
+
+/* Ensure Section 3 has similar styling to Section 2 */
+#section-3 {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Video Background Styling for Section 3 */
+#section-3 .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1; /* Ensure the video stays behind the text */
+}
+
+/* Positioning the Text for Section 3 */
+#section-3 .text-content {
+    position: relative;
+    z-index: 3;
+    color: rgb(255, 255, 255); /* Make the text black for this section */
+    text-align: center;
+}
+
+
+
+
+/* Section 4 Styling */
+#section-4 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    color: white;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 10; /* Ensure this section is above other elements */
+}
+
+/* Sentiment Analysis Section */
+.sentiment-heading {
+    margin-top: 20px;
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 20; /* Ensure heading is visible */
+}
+
+.sentiment-analysis {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8); /* Slightly darker background */
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    z-index: 20; /* Ensure sentiment analysis box is visible */
+}
+
+/* Improved Input Box Styling */
+.input-box {
+    width: 80%; /* Use percentage for responsive width */
+    max-width: 700px; /* Increase max width */
+    height: 200px; /* Adjust height */
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 5px solid #007bff;
+    border-radius: 12px;
+    resize: none;
+    font-size: 1.1rem;
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.95);
+    z-index: 20;
+    transition: border-color 0.3s ease;
+}
+
+.input-box:focus {
+    border-color: #06b300;
+    outline: none;
+}
+
+
+.analyze-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: transform 0.2s, background-color 0.3s ease;
+    z-index: 20; /* Ensure button is visible */
+}
+
+.analyze-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Result display area styling */
+.result-container {
+    width: 80%; /* Match the width of the input box */
+    max-width: 700px; /* Match the max width of the input box */
+    margin: 20px auto; /* Center the container */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: background-color 0.3s ease;
+    color: #fff;
+    z-index: 20;
+    display: none; /* Hide initially */
+    position: relative; /* Ensure it's properly positioned within the parent */
+}
+
+.result-output {
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Video Background Styling for Section 4 */
+#section-4 .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 5; /* Ensure video stays behind the content */
 }
