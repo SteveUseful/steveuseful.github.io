@@ -58,9 +58,9 @@
         </video>
     </div>
     <div class="card-content">
-        <h3>My Website Project</h3>
-        <p>Full Website Project on Git Repo</p>
-        <a href="https://github.com/SteveUseful/steveuseful.github.io" target="_blank">View on GitHub</a>
+        <h3>My Website</h3>
+        <p>My Website</p>
+        <a href="https://github.com/SteveUseful/steveuseful.github.io" target="_blank">Learn More</a>
     </div>
 </div>
 
@@ -73,9 +73,9 @@
         </video>
     </div>
     <div class="card-content">
-        <h3>NLP Model Training</h3>
-        <p>Churn Prediction and Performance</p>
-        <a href="https://github.com/SteveUseful/model_training" target="_blank">View on GitHub</a>
+        <h3>NLP Model</h3>
+        <p>Churn-AI</p>
+        <a href="https://github.com/SteveUseful/model_training" target="_blank">Learn More</a>
     </div>
 </div>
 
@@ -88,9 +88,9 @@
         </video>
     </div>
     <div class="card-content">
-        <h3>Project Title 3</h3>
-        <p>Short description of Project 3</p>
-        <a href="#">View on GitHub</a>
+        <h3>AI Analyzer</h3>
+        <p>Data Analyzer</p>
+        <a href="#">Learn More</a>
     </div>
 </div>
 
@@ -185,13 +185,14 @@
     
             window.addEventListener('mouseup', () => {
                 isDown = false;
-                container.classList.remove('active');
+                if (container) container.classList.remove('active');
             });
     
             if (container) {
                 container.addEventListener('mousedown', (e) => {
-                    if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') {
-                        return; // Prevent scrolling if clicking on text area or input
+                    // Prevent scrolling if clicking on text area or input
+                    if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT' || e.target.classList.contains('analyze-btn')) {
+                        return;
                     }
                     isDown = true;
                     startX = e.pageX - container.offsetLeft;
@@ -238,7 +239,7 @@
                     event.stopPropagation();
                 });
             }
-
+    
             // Analyze Sentiment Function
             window.analyzeSentiment = function() {
                 console.log('analyzeSentiment function called');
@@ -284,30 +285,30 @@
                     } else {
                         resultOutput.style.color = '#ffff00'; // Yellow color for neutral
                         resultContainer.style.backgroundColor = 'rgba(255, 255, 0, 0.3)';
-                    } // Close the fetch request handler
+                    }
                 })
                 .catch(error => {
                     console.error('Error:', error);
                     alert('Error analyzing sentiment.');
                 });
             };
-
+    
             // Video hover control for the cards in Section 2
             const cards = document.querySelectorAll('.card');
-
+    
             cards.forEach(card => {
                 const video = card.querySelector('video');
-
+    
                 card.addEventListener('mouseenter', () => {
                     video.play();
                 });
-
+    
                 card.addEventListener('mouseleave', () => {
                     video.pause();
                     video.currentTime = 0; // Optional: Rewind to start
                 });
             });
-
+    
             // FADE-IN FUNCTIONALITY FOR CARDS
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -318,12 +319,13 @@
             }, {
                 threshold: 0.1 // Trigger when 10% of the card is visible
             });
-
+    
             cards.forEach(card => {
                 observer.observe(card); // Start observing each card
             });
         });
     </script>
+    
 
 </body>
 </html>

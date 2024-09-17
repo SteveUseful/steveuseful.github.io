@@ -354,7 +354,10 @@ body {
 
 /* Card Content */
 .card-content {
-    padding: 15px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Darker background for contrast */
+    color: #ffffff; /* White text for better readability */
+    border-radius: 0 0 10px 10px; /* Rounded corners for a better look */
 }
 
 .card-content h3 {
@@ -363,13 +366,15 @@ body {
 }
 
 .card-content p {
-    font-size: 1rem;
-    margin-bottom: 15px;
+    font-size: 1em;
+    margin-bottom: 10px;
 }
 
 .card-content a {
-    color: #00bfff;
+    color: #0b0542;
+    font-size: 1.2em;
     text-decoration: none;
+    transition: color 0.3s;
 }
 
 .card-content a:hover {
