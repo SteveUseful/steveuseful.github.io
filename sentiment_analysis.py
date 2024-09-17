@@ -40,7 +40,9 @@ def adjust_for_nuances(text, score):
     if "okay, but" in text.lower() or "could be improved" in text.lower():
         score['compound'] -= 0.4  # Increase adjustment impact
     return score
-
+@app.route('/')
+def index():
+    return "Sentiment Analysis API is running."
 @app.route('/analyze', methods=['POST'])
 def analyze():
     try:
@@ -55,6 +57,7 @@ def analyze():
         return jsonify({'sentiment': sentiment})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
 
 # Function to process a list of texts (not used in the current implementation, but can be useful for batch processing)
 def analyze_sentiments(texts):
