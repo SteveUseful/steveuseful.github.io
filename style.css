@@ -1,0 +1,582 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    color: white;
+    background-color: black;
+}
+
+/* Ripple Container */
+.ripple-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1010;
+    pointer-events: none; /* Ensure it doesn’t interfere with interactions */
+}
+
+/* Horizontal Scroll Container */
+.horizontal-scroll-container {
+    display: flex;
+    overflow-x: auto; /* Enable native horizontal scrolling */
+    height: 100vh;
+    white-space: nowrap;
+    scroll-snap-type: x mandatory; /* Enable snapping */
+    scroll-behavior: smooth; /* Smooth scrolling behavior */
+    cursor: grab; /* Add cursor for dragging feedback */
+}
+
+.horizontal-scroll-container.active {
+    cursor: grabbing; /* Change cursor when active */
+}
+
+.scroll-section {
+    min-width: 100vw; /* Ensure each section takes up the full viewport width */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: white;
+    scroll-snap-align: start; /* Snap to the start of each section */
+}
+
+/* Section Background Colors */
+.scroll-section:nth-child(1) {
+    background-color: #000000;
+}
+.scroll-section:nth-child(2) {
+    background-color: #000000;
+}
+.scroll-section:nth-child(3) {
+    background-color: #000000;
+}
+.scroll-section:nth-child(4) {
+    background-color: #000000;
+}
+.active {
+    cursor: grabbing;
+    user-select: none;
+}
+
+.video-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Section 1 Styling */
+#section-1 {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Make the section fill the viewport height */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Video Background Styling */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the video covers the entire area */
+    z-index: 1; /* Keep it behind the text */
+}
+
+.video-background video {
+    width: 100%; /* Make the video cover the full width */
+    height: 100%; /* Ensure the video fills the height as well */
+    object-fit: cover;
+}
+
+/* Text Content Styling */
+#section-1 .text-content {
+    position: absolute;
+    top: 50%; /* Adjust this value to move the text vertically */
+    left: 10%; /* Adjust this value to move the text horizontally */
+    transform: translateY(-50%);
+    color: white;
+    text-align: left; /* Keep text aligned to the left */
+    z-index: 2;
+}
+
+#section-2 {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#section-1 h1 {
+    font-size: 3rem; /* Adjust size as needed */
+    margin-bottom: 20px;
+}
+
+#section-1 p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+#section-1 .scroll-hint {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    margin-top: 20px;
+}
+
+
+
+
+
+
+.logo-top-left {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 40px; /* Adjust size as needed */
+    z-index: 3;
+}
+.logo-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px; /* Adjust size as needed */
+    animation: glow 2s infinite;
+    z-index: 2;
+}
+
+@keyframes glow {
+    0% { filter: brightness(1); }
+    50% { filter: brightness(1.5); }
+    100% { filter: brightness(1); }
+}
+
+.sub-title {
+    font-size: 2.2rem; /* Slightly smaller than before */
+    margin-bottom: 10px;
+    color: #FF7F7F; /* Use a distinct color */
+    position: relative;
+    z-index: 2; /* Ensure it stays above the main text */
+}
+.main-title {
+    font-size: 3rem; /* Adjust size to avoid overlap with logo */
+    margin-bottom: 20px;
+    color: white; /* or another color to match your theme */
+    line-height: 1.2;
+    z-index: 2;
+}
+
+.highlight {
+    color: #f56969; /* Use this for any highlighted words */
+}
+.about-link {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    z-index: 3;
+}
+
+.about-link:hover {
+    color: #FF7F7F;
+    text-transform: uppercase;
+}
+.drag-to-explore {
+    position: absolute;
+    bottom: 50px;
+    left: 10px;
+    color: white;
+    font-size: 1.2rem;
+    z-index: 3;
+    color: #FF7F7F; /* Match the color with 'We are Your Brand' */
+}
+
+.drag-to-explore::before {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 2px;
+    background-color: white;
+    animation: animate-line 2s infinite;
+    margin-bottom: 5px;
+}
+
+@keyframes animate-line {
+    0%, 100% { width: 0; }
+    50% { width: 50px; }
+}
+.footer-left {
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+    color: white;
+    font-size: 0.8rem;
+    z-index: 3;
+}
+
+.footer-left a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.footer-left a:hover {
+    text-decoration: underline;
+    color: #FF7F7F;
+}
+
+.squiggly-line {
+    position: absolute;
+    top: 20px; /* Adjust as needed for spacing from the top */
+    left: 50%; /* Start at the middle of the page horizontally */
+    transform: translateX(-50%); /* Center the video horizontally */
+    width: 150px; /* Adjust width to make it bigger */
+    height: 60px; /* Adjust height to make it bigger */
+    z-index: 3;
+    opacity: 0.8; /* Add transparency if needed */
+}
+
+.squiggly-line video {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* Ensure the video covers the entire area */
+    animation: wave 3s infinite;
+}
+
+/* Optional: Wave Animation */
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+
+
+
+
+
+
+
+
+/* Section 2 Styling */
+#section-2 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: white;
+    overflow: hidden;
+}
+
+/* Video Background for Section 2 */
+.video-container {
+    position: absolute; /* Make the video stay in the background */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Keep the video behind other content */
+    overflow: hidden;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Card Container */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    z-index: 2; /* Cards still above the background */
+    position: relative;
+    margin-top: 100px; /* This margin pushes the cards down */
+    align-items: center;
+}
+
+/* Card Style */
+.card {
+    background-color: rgba(154, 165, 162, 0.8);
+    border-radius: 10px;
+    width: calc(25% - 20px); /* Make the cards smaller by reducing the percentage */
+    text-align: center;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    color: white;
+    overflow: hidden;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(50px); /* Keep the translate for animation */
+    transition: opacity 8s ease-in-out, transform 8s ease-in-out;
+}
+
+/* Hover Effect */
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* Card Video */
+.card-video {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none; /* Prevent video controls interaction */
+}
+
+/* Card Content */
+.card-content {
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Darker background for contrast */
+    color: #ffffff; /* White text for better readability */
+    border-radius: 0 0 10px 10px; /* Rounded corners for a better look */
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.card-content a {
+    color: #0b0542;
+    font-size: 1.2em;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.card-content a:hover {
+    text-decoration: underline;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Slight upward movement for smooth effect */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply fade-in effect to each card */
+
+
+.card.visible {
+    animation: fadeIn 0.8s forwards;
+}
+
+
+
+
+
+
+#section-2 h2 {
+    z-index: 3; /* Ensure heading is above everything else */
+    position: relative;
+}
+
+/* Sectyion 3 Styling */
+#section-3, #section-4 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    color: white;
+    overflow: hidden;
+}
+
+/* Heading Styling */
+#section-3, #section-4 h2 {
+    position: relative;
+    margin-bottom: 20px; /* Space below the title */
+    font-size: 3rem;
+    color: black;
+    text-align: center; /* Center the text */
+    z-index: 10;
+}
+
+
+/* Ensure Section 3 has similar styling to Section 2 */
+#section-3 {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Video Background Styling for Section 3 */
+#section-3 .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1; /* Ensure the video stays behind the text */
+}
+
+/* Positioning the Text for Section 3 */
+#section-3 .text-content {
+    position: relative;
+    z-index: 3;
+    color: rgb(255, 255, 255); /* Make the text black for this section */
+    text-align: center;
+}
+
+
+
+
+/* Section 4 Styling */
+#section-4 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    color: white;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 10; /* Ensure this section is above other elements */
+}
+
+/* Sentiment Analysis Section */
+.sentiment-heading {
+    margin-top: 20px;
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 20; /* Ensure heading is visible */
+}
+#section-4 h2 {
+    color: white;
+}
+
+.sentiment-analysis {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8); /* Slightly darker background */
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    z-index: 20; /* Ensure sentiment analysis box is visible */
+}
+
+/* Improved Input Box Styling */
+.input-box {
+    width: 80%; /* Use percentage for responsive width */
+    max-width: 700px; /* Increase max width */
+    height: 200px; /* Adjust height */
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 5px solid #007bff;
+    border-radius: 12px;
+    resize: none;
+    font-size: 1.1rem;
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.95);
+    z-index: 20;
+    transition: border-color 0.3s ease;
+}
+
+.input-box:focus {
+    border-color: #06b300;
+    outline: none;
+}
+
+
+.analyze-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: transform 0.2s, background-color 0.3s ease;
+    z-index: 20; /* Ensure button is visible */
+}
+
+.analyze-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Result display area styling */
+.result-container {
+    width: 80%; /* Match the width of the input box */
+    max-width: 700px; /* Match the max width of the input box */
+    margin: 20px auto; /* Center the container */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: background-color 0.3s ease;
+    color: #fff;
+    z-index: 20;
+    display: none; /* Hide initially */
+    position: relative; /* Ensure it's properly positioned within the parent */
+}
+
+.result-output {
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Video Background Styling for Section 4 */
+#section-4 .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 5; /* Ensure video stays behind the content */
+}

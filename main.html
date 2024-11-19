@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steve's Site</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Logo in the Top Left Corner -->
+    <div class="logo-top-left">
+        <img src="assets/images/logo1.png" alt="Logo">
+    </div>
+
+    <!-- About Link in the Top Right Corner -->
+    <a href="#" class="about-link">About</a>
+
+    <!-- Ripple Effect Container -->
+    <div class="ripple-container"></div>
+
+    <!-- Horizontal Scrolling Sections -->
+    <div class="horizontal-scroll-container">
+        <section class="scroll-section" id="section-1">
+            <div class="video-background">
+                <video autoplay muted loop playsinline>
+                    <source src="assets/videos/man.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="text-content">
+                <div class="sub-title">Welcome to <span class="highlight">Steve's Site</span></div>
+                <h1 class="main-title">The Future of AI <br> Is Not<span class="highlight"> Generative</span></h1>
+                <p>Explore my projects, blog, and more by scrolling horizontally.</p>
+                <div class="scroll-hint">
+                    <span>&larr; Scroll Left or Right &rarr;</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="scroll-section" id="section-2">
+            <h2>My Projects</h2>
+            <div class="video-background">
+                <video autoplay muted loop playsinline>
+                    <source src="assets/videos/water6.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <!-- Card Container for GitHub Projects -->
+            <div class="card-container">
+                <!-- Add your cards here -->
+                 <!-- Card 1 -->
+<div class="card">
+    <div class="card-video">
+        <video autoplay muted loop playsinline>
+            <source src="assets/videos/AI_IronManish.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="card-content">
+        <h3>My Website</h3>
+        <p>My Website</p>
+        <a href="https://github.com/SteveUseful/steveuseful.github.io" target="_blank">Learn More</a>
+    </div>
+</div>
+
+<!-- Card 2 -->
+<div class="card">
+    <div class="card-video">
+        <video autoplay muted loop playsinline>
+            <source src="assets/videos/phones.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="card-content">
+        <h3>NLP Model</h3>
+        <p>Churn-AI</p>
+        <a href="https://github.com/SteveUseful/model_training" target="_blank">Learn More</a>
+    </div>
+</div>
+
+<!-- Card 3 -->
+<div class="card">
+    <div class="card-video">
+        <video autoplay muted loop playsinline>
+            <source src="assets/videos/stats2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="card-content">
+        <h3>AI Analyzer</h3>
+        <p>Data Analyzer</p>
+        <a href="#">Learn More</a>
+    </div>
+</div>
+
+            </div>
+        </section>
+
+        <section class="scroll-section" id="section-3">
+            <h2>Blogs and Career</h2>
+            <div class="video-background">
+                <video autoplay muted playsinline>
+                    <source src="assets/videos/hallway.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="card-container">
+                <!-- Add your cards here -->
+            </div>
+        </section>
+
+        <section class="scroll-section" id="section-4">
+            <h2 class="sentiment-heading">How Your Customers Feel</h2>
+            <div class="video-background">
+                <video autoplay muted loop playsinline>
+                    <source src="assets/videos/about.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="text-content">
+                <h3 class="sentiment-heading">Sentiment Analysis</h3>
+                <div class="sentiment-analysis">
+                    <textarea id="input-text" class="input-box" placeholder="Enter your text here..."></textarea>
+                    <button class="analyze-btn" onclick="analyzeSentiment()">Analyze Sentiment</button>
+                </div>
+        
+                <!-- New result display area -->
+                <div id="result-container" class="result-container" style="display: none;">
+                    <div id="result" class="result-output">Sentiment will appear here</div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Footer Left with Drag to Explore and Links -->
+    <div class="footer-left">
+        <div class="drag-to-explore">
+            Click & Drag to Explore
+        </div>
+        <div>
+            <a href="#">Privacy Policy</a> |
+            <a href="mailto:steveuseful@gmail.com">steveuseful@gmail.com</a>
+        </div>
+    </div>
+
+    <!-- Squiggly Line in Bottom Right -->
+    <div class="squiggly-line"></div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Ripples.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+
+    <!-- Main JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (typeof $.fn.ripples !== 'undefined') {
+                $('.ripple-container').ripples({
+                    resolution: 1000,
+                    dropRadius: 4,
+                    perturbance: 0.5,
+                    interactive: false,
+                });
+    
+                let lastRippleTime = 0;
+                const rippleDelay = 125;
+    
+                $(document).on('mousemove', function (e) {
+                    const currentTime = new Date().getTime();
+                    if (currentTime - lastRippleTime > rippleDelay) {
+                        $('.ripple-container').ripples('drop', e.pageX, e.pageY, 10, 0.04);
+                        lastRippleTime = currentTime;
+                    }
+                });
+            } else {
+                console.error("Ripples.js is not loaded correctly.");
+            }
+    
+            // Horizontal Scroll Functionality
+            const container = document.querySelector('.horizontal-scroll-container');
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+    
+            window.addEventListener('mouseup', () => {
+                isDown = false;
+                if (container) container.classList.remove('active');
+            });
+    
+            if (container) {
+                container.addEventListener('mousedown', (e) => {
+                    // Prevent scrolling if clicking on text area or input
+                    if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT' || e.target.classList.contains('analyze-btn')) {
+                        return;
+                    }
+                    isDown = true;
+                    startX = e.pageX - container.offsetLeft;
+                    scrollLeft = container.scrollLeft;
+                    container.classList.add('active');
+                });
+    
+                container.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    container.classList.remove('active');
+                });
+    
+                container.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - container.offsetLeft;
+                    const walk = (x - startX) * 2; // Adjust scrolling speed
+                    container.scrollLeft = scrollLeft - walk;
+                });
+    
+                container.addEventListener('mouseup', () => {
+                    const containerWidth = container.clientWidth;
+                    const totalScrollWidth = container.scrollWidth;
+                    const scrollPosition = container.scrollLeft;
+    
+                    if (scrollPosition <= 0) {
+                        container.scrollTo({
+                            left: totalScrollWidth - containerWidth,
+                            behavior: 'smooth'
+                        });
+                    } else if (scrollPosition + containerWidth >= totalScrollWidth) {
+                        container.scrollTo({
+                            left: 0,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+    
+            // Prevent scrolling when clicking inside the textarea
+            const inputBox = document.getElementById('input-text');
+            if (inputBox) {
+                inputBox.addEventListener('mousedown', function (event) {
+                    event.stopPropagation();
+                });
+            }
+    
+            // Analyze Sentiment Function
+            window.analyzeSentiment = function() {
+                console.log('analyzeSentiment function called');
+                const text = document.getElementById('input-text').value.trim();
+                
+                if (text === '') {
+                    alert('Please enter some text to analyze.');
+                    return;
+                }
+            
+                fetch('https://sentiment-yx4o.onrender.com/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ text: text }),
+                })
+                .then(response => {
+                    console.log('Fetch response:', response);
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Sentiment analysis data:', data);
+            
+                    const resultOutput = document.getElementById('result');
+                    const resultContainer = document.getElementById('result-container');
+            
+                    console.log('Result element:', resultOutput);
+                    console.log('Result container element:', resultContainer);
+            
+                    resultOutput.innerHTML = `${data.sentiment}`;
+                    console.log('Updated result innerHTML:', resultOutput.innerHTML);
+            
+                    resultContainer.style.display = 'block';
+                    console.log('Result container style:', resultContainer.style.display);
+            
+                    if (data.sentiment === 'Positive' || data.sentiment === 'Very Positive') {
+                        resultOutput.style.color = '#00ff00'; // Green color for positive
+                        resultContainer.style.backgroundColor = 'rgba(0, 128, 0, 0.3)';
+                    } else if (data.sentiment === 'Negative' || data.sentiment === 'Very Negative') {
+                        resultOutput.style.color = '#ff0000'; // Red color for negative
+                        resultContainer.style.backgroundColor = 'rgba(255, 0, 0, 0.3)';
+                    } else {
+                        resultOutput.style.color = '#ffff00'; // Yellow color for neutral
+                        resultContainer.style.backgroundColor = 'rgba(255, 255, 0, 0.3)';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error analyzing sentiment.');
+                });
+            };
+    
+            // Video hover control for the cards in Section 2
+            const cards = document.querySelectorAll('.card');
+    
+            cards.forEach(card => {
+                const video = card.querySelector('video');
+    
+                card.addEventListener('mouseenter', () => {
+                    video.play();
+                });
+    
+                card.addEventListener('mouseleave', () => {
+                    video.pause();
+                    video.currentTime = 0; // Optional: Rewind to start
+                });
+            });
+    
+            // FADE-IN FUNCTIONALITY FOR CARDS
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible'); // Add class to trigger fade-in
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the card is visible
+            });
+    
+            cards.forEach(card => {
+                observer.observe(card); // Start observing each card
+            });
+        });
+    </script>
+    
+
+</body>
+</html>

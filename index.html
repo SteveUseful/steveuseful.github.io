@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro Video</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: black;
+        }
+
+        /* Full-Screen Intro Video */
+        .intro-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000; /* High z-index to keep it on top */
+        }
+
+        #intro-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Ripple Container */
+        .ripple-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1010; /* Ensure it’s above the video */
+            pointer-events: none; /* Ensure it doesn’t interfere with interactions */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ripple Effect Container -->
+    <div class="ripple-container"></div>
+
+    <!-- Full-Screen Intro Video -->
+    <div class="intro-video-container">
+        <video autoplay muted id="intro-video">
+            <source src="assets/videos/opening.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Ripples.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+
+    <!-- Script to Handle Video End and Ripple Effect -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const introVideo = document.getElementById('intro-video');
+
+            // Listen for when the video ends
+            introVideo.addEventListener('ended', function() {
+                // Once the video ends, transition to the main content
+                loadMainContent();
+            });
+
+            function loadMainContent() {
+                // Remove the intro video
+                $('.intro-video-container').fadeOut(500, function() {
+                    // Redirect to the main content
+                    window.location.href = 'main.html'; // Load the main content page
+                });
+            }
+
+            // Initialize ripple effect
+            if (typeof $.fn.ripples !== 'undefined') {
+                $('.ripple-container').ripples({
+                    resolution: 800,
+                    dropRadius: 5,
+                    perturbance: 0.2,
+                    interactive: false,
+                });
+
+                let lastRippleTime = 0;
+                const rippleDelay = 25;
+
+                $(document).on('mousemove', function(e) {
+                    const currentTime = new Date().getTime();
+                    if (currentTime - lastRippleTime > rippleDelay) {
+                        $('.ripple-container').ripples('drop', e.pageX, e.pageY, 10, 0.04);
+                        lastRippleTime = currentTime;
+                    }
+                });
+            } else {
+                console.error("Ripples.js is not loaded correctly.");
+            }
+        });
+    </script>
+
+</body>
+</html>
