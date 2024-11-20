@@ -1,34 +1,57 @@
 document.addEventListener("DOMContentLoaded", function () {
-    if (typeof $.fn.ripples !== 'undefined') {
-        $('.ripple-container').ripples({
-            resolution: 256,
-            dropRadius: 5,
-            perturbance: 0.04,
-            interactive: false,
-        });
+    // Initialize all functionalities
+    initializeRipples();
+    initializeHorizontalScroll();
 
-        let lastRippleTime = 0;
-        const rippleDelay = 500;
+    const introVideo = document.getElementById('intro-video');
 
-        $(document).on('mousemove', function (e) {
-            const currentTime = new Date().getTime();
-            if (currentTime - lastRippleTime > rippleDelay) {
-                $('.ripple-container').ripples('drop', e.pageX, e.pageY, 10, 0.04);
-                lastRippleTime = currentTime;
-            }
+    // Handle video end to load the main content
+    introVideo.addEventListener('ended', loadMainContent);
+
+    function loadMainContent() {
+        // Fade out the video container and redirect to the main content page
+        $('.intro-video-container').fadeOut(500, function () {
+            window.location.href = 'main.html';
         });
-    } else {
-        console.error("Ripples.js is not loaded correctly.");
     }
 
-    // Horizontal Scroll Functionality with Carousel Effect and Snap Scrolling
-    const container = document.querySelector('.horizontal-scroll-container');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+    // Ripple effect functionality
+    function initializeRipples() {
+        if (typeof $.fn.ripples !== 'undefined') {
+            $('.ripple-container').ripples({
+                resolution: 256,
+                dropRadius: 5,
+                perturbance: 0.04,
+                interactive: false,
+            });
 
-    if (container) {
-        // Mouse down event to start dragging
+            let lastRippleTime = 0;
+            const rippleDelay = 500;
+
+            $(document).on('mousemove', function (e) {
+                const currentTime = new Date().getTime();
+                if (currentTime - lastRippleTime > rippleDelay) {
+                    $('.ripple-container').ripples('drop', e.pageX, e.pageY, 10, 0.04);
+                    lastRippleTime = currentTime;
+                }
+            });
+        } else {
+            console.error("Ripples.js is not loaded correctly.");
+        }
+    }
+
+    // Horizontal scroll functionality with snapping and carousel effect
+    function initializeHorizontalScroll() {
+        const container = document.querySelector('.horizontal-scroll-container');
+        if (!container) {
+            console.warn("Horizontal scroll container not found.");
+            return;
+        }
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
         container.addEventListener('mousedown', (e) => {
             isDown = true;
             startX = e.pageX - container.offsetLeft;
@@ -36,87 +59,106 @@ document.addEventListener("DOMContentLoaded", function () {
             container.classList.add('active');
         });
 
-        // Mouse leave event to stop dragging
+        container.addEventListener('touchstart', (e) => {
+            isDown = true;
+            startX = e.touches[0].pageX - container.offsetLeft;
+            scrollLeft = container.scrollLeft;
+        });
+
         container.addEventListener('mouseleave', () => {
             isDown = false;
             container.classList.remove('active');
         });
 
-        // Mouse up event to stop dragging and handle snapping
         container.addEventListener('mouseup', () => {
             isDown = false;
             container.classList.remove('active');
-
-            // Handle snapping to the nearest section
             snapToSection(container);
-
-            // Check for carousel effect
-            setTimeout(() => {
-                handleCarouselEffect(container);
-            }, 300); // Delay to ensure snapping completes first
+            setTimeout(() => handleCarouselEffect(container), 300);
         });
 
-        // Mouse move event to handle dragging
+        container.addEventListener('touchend', () => {
+            isDown = false;
+            snapToSection(container);
+        });
+
         container.addEventListener('mousemove', (e) => {
             if (!isDown) return;
             e.preventDefault();
             const x = e.pageX - container.offsetLeft;
-            const walk = (x - startX) * 2; // Adjust scrolling speed
+            const walk = (x - startX) * 2;
             container.scrollLeft = scrollLeft - walk;
         });
 
-        // Ensure the drag state is reset if the mouse leaves the window
+        container.addEventListener('touchmove', (e) => {
+            if (!isDown) return;
+            const x = e.touches[0].pageX - container.offsetLeft;
+            const walk = (x - startX) * 2;
+            container.scrollLeft = scrollLeft - walk;
+        });
+
         window.addEventListener('mouseup', () => {
             isDown = false;
             container.classList.remove('active');
         });
-    }
 
-    // Function to snap to the nearest section
-    function snapToSection(container) {
-        const sections = container.querySelectorAll('.scroll-section');
-        const scrollPosition = container.scrollLeft + container.clientWidth / 2;
+        function snapToSection(container) {
+            const sections = container.querySelectorAll('.scroll-section');
+            const scrollPosition = container.scrollLeft + container.clientWidth / 2;
 
-        let closestSection = null;
-        let minDistance = Infinity;
+            let closestSection = null;
+            let minDistance = Infinity;
 
-        sections.forEach(section => {
-            const sectionPosition = section.offsetLeft;
-            const distance = Math.abs(scrollPosition - sectionPosition);
-            if (distance < minDistance) {
-                minDistance = distance;
-                closestSection = section;
+            sections.forEach(section => {
+                const sectionPosition = section.offsetLeft;
+                const distance = Math.abs(scrollPosition - sectionPosition);
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestSection = section;
+                }
+            });
+
+            if (closestSection) {
+                container.scrollTo({
+                    left: closestSection.offsetLeft,
+                    behavior: 'smooth',
+                });
             }
-        });
+        }
 
-        if (closestSection) {
-            container.scrollTo({
-                left: closestSection.offsetLeft,
-                behavior: 'smooth'
-            });
+        function handleCarouselEffect(container) {
+            const containerWidth = container.clientWidth;
+            const totalScrollWidth = container.scrollWidth;
+            const scrollPosition = container.scrollLeft;
+
+            if (scrollPosition <= 0) {
+                container.scrollTo({
+                    left: totalScrollWidth - containerWidth,
+                    behavior: 'smooth',
+                });
+            }
+
+            if (scrollPosition + containerWidth >= totalScrollWidth) {
+                container.scrollTo({
+                    left: 0,
+                    behavior: 'smooth',
+                });
+            }
         }
     }
 
-    // Function to handle the carousel effect
-    function handleCarouselEffect(container) {
-        const containerWidth = container.clientWidth;
-        const totalScrollWidth = container.scrollWidth;
-        const scrollPosition = container.scrollLeft;
+    
+});
 
-        // If at the start of Section 1 and scrolling left, jump to Section 4
-        if (scrollPosition <= 0) {
-            container.scrollTo({
-                left: totalScrollWidth - containerWidth,
-                behavior: 'smooth'
-            });
-        }
+document.addEventListener("DOMContentLoaded", function () {
+    const blogsVideo = document.getElementById("blogs-video");
+    const blogCardContainer = document.getElementById("blog-card-container");
 
-        // If at the end of Section 4 and scrolling right, jump to Section 1
-        if (scrollPosition + containerWidth >= totalScrollWidth) {
-            container.scrollTo({
-                left: 0,
-                behavior: 'smooth'
-            });
-        }
+    if (blogsVideo) {
+        blogsVideo.addEventListener("ended", function () {
+            // Show the card container when the video ends
+            blogCardContainer.classList.add("visible");
+        });
     }
 });
+

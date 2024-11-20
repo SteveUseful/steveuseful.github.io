@@ -100,15 +100,26 @@
         <section class="scroll-section" id="section-3">
             <h2>Blogs and Career</h2>
             <div class="video-background">
-                <video autoplay muted playsinline>
+                <video id="blogs-video" autoplay muted playsinline>
                     <source src="assets/videos/hallway.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
-            <div class="card-container">
-                <!-- Add your cards here -->
+            <div class="card-container hidden" id="blog-card-container">
+                <div class="card">
+                    <div class="card-video">
+                        <img src="assets/videos/writer.gif" alt="Blog Preview" />
+                    </div>
+                    <div class="card-content">
+                        <h3>Developer Blog</h3>
+                        <p>Discover insights and tutorials about software development and AI.</p>
+                        <a href="blog.html" class="btn">Visit Blog</a>
+                    </div>
+                </div>
             </div>
         </section>
+        
+        
 
         <section class="scroll-section" id="section-4">
             <h2 class="sentiment-heading">How Your Customers Feel</h2>
