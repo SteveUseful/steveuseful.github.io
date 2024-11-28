@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/blog-pages.css">
+</head>
+<body>
+    <!-- Include Sidebar -->
+    <?php include('sidebar.html'); ?>
+
+    <main class="content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Welcome to the Developer Hub</h1>
+            <p>Your one-stop destination for tutorials, real-world examples, and API integrations.</p>
+            <a href="#articles">Explore Articles</a>
+        </section>
+
+        <!-- Articles Section -->
+        <section id="articles" class="grid-section">
+            <h2>Articles</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Introductory Guide to Building an LLM</h3>
+                    <p>Learn how to build your own language model using Hugging Face and Python.</p>
+                    <a href="post-llm.html">Read More</a>
+                </div>
+                <div class="card">
+                    <h3>Exploring Generative AI</h3>
+                    <p>A deep dive into generative AI technologies and their applications.</p>
+                    <a href="post2.html">Read More</a>
+                </div>
+                <div class="card">
+                    <h3>Configuring Redis Using a ConfigMap</h3>
+                    <p>A guide to configuring Redis in Kubernetes using ConfigMaps.</p>
+                    <a href="configure-redis-using-configmap.html">Read More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Real-World Examples Section -->
+        <section id="examples" class="grid-section">
+            <h2>Real-World Examples</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>End-to-End Deployment with Kubernetes</h3>
+                    <p>A step-by-step example of deploying a full-stack application using Kubernetes.</p>
+                    <a href="#">Read More</a>
+                </div>
+                <div class="card">
+                    <h3>API Gateway Integration</h3>
+                    <p>How to set up and integrate an API Gateway with microservices.</p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- API Development Section -->
+        <section id="api" class="grid-section">
+            <h2>API Development</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Designing RESTful APIs</h3>
+                    <p>Best practices for designing scalable and maintainable REST APIs.</p>
+                    <a href="#">Read More</a>
+                </div>
+                <div class="card">
+                    <h3>GraphQL vs REST</h3>
+                    <p>A comparison of GraphQL and REST API architectures.</p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
