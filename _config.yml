@@ -1,0 +1,8 @@
+title: Developer Hub
+description: A one-stop destination for developer tutorials and documentation.
+baseurl: "" # Leave empty if deploying to the root on GitHub Pages
+url: "https://<username>.github.io" # Replace <username> with your GitHub username
+theme: minima # Optionally use Jekyll's default theme
+markdown: kramdown
+plugins:
+  - jekyll-feed # Optional plugin for RSS feeds
