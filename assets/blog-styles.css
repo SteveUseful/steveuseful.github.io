@@ -1,24 +1,37 @@
+/* General Layout */
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    background-color: #f5f7fa;
+    color: #333;
+    overflow-x: hidden;
+}
+
 /* Layout for Blog Page */
 .blog-layout {
     display: flex;
     height: 100vh;
-    font-family: 'Montserrat', sans-serif;
-    color: #333333;
 }
 
 /* Sidebar */
 .sidebar {
     width: 250px;
-    background-color: #1a1a1a;
+    background: linear-gradient(135deg, #1a1a1a, #333333);
     color: #ffffff;
     padding: 20px;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 3px 0 15px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    animation: fadeIn 1.2s ease-out;
 }
 
 .sidebar h2 {
     font-size: 1.8rem;
     margin-bottom: 20px;
     color: #00d8ff;
+    text-align: center;
 }
 
 .sidebar ul {
@@ -36,22 +49,25 @@
     text-decoration: none;
     font-size: 1.1em;
     display: block;
-    padding: 5px;
+    padding: 10px 15px;
     border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .sidebar ul li a:hover {
-    background-color: #00d8ff;
+    background: #00d8ff;
     color: #1a1a1a;
+    transform: translateX(10px);
 }
 
 /* Content Area */
 .content {
     flex: 1;
     padding: 40px;
-    background-color: #f5f5f5;
+    margin-left: 250px;
+    background-color: #f9f9f9;
     overflow-y: auto;
+    animation: fadeIn 1.5s ease-out;
 }
 
 /* Hero Section */
@@ -59,15 +75,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #ffffff;
+    background: #ffffff;
     padding: 40px;
     margin-bottom: 30px;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    animation: popIn 0.8s ease-out;
 }
 
 .hero-text {
-    max-width: 50%;
+    max-width: 60%;
 }
 
 .hero-text h1 {
@@ -83,22 +100,25 @@
 }
 
 .btn-hero {
-    padding: 10px 20px;
+    padding: 12px 25px;
     font-size: 1rem;
     color: #ffffff;
     background-color: #007bff;
     text-decoration: none;
-    border-radius: 25px;
-    transition: background-color 0.3s ease;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);
 }
 
 .btn-hero:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 .hero-image img {
     max-width: 100%;
     border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Featured Section */
@@ -106,7 +126,7 @@
     background-color: #ffffff;
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
 }
 
@@ -121,6 +141,7 @@
     display: flex;
     gap: 20px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .featured .card {
@@ -131,6 +152,12 @@
     text-align: center;
     flex: 1;
     max-width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured .card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .featured .card h3 {
@@ -152,11 +179,12 @@
     background-color: #007bff;
     text-decoration: none;
     border-radius: 25px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .featured .card .btn:hover {
     background-color: #0056b3;
+    transform: scale(1.1);
 }
 
 /* Call to Action Section */
@@ -165,7 +193,7 @@
     padding: 40px;
     background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .cta h2 {
@@ -181,15 +209,40 @@
 }
 
 .btn-cta {
-    padding: 10px 20px;
+    padding: 15px 30px;
     font-size: 1.2rem;
     color: #ffffff;
     background-color: #28a745;
     text-decoration: none;
-    border-radius: 25px;
-    transition: background-color 0.3s ease;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.4);
 }
 
 .btn-cta:hover {
     background-color: #218838;
+    transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }

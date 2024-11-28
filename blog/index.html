@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Blog</title>
+    <link rel="stylesheet" href="assets/blog-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Hero Section Styling */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+        }
+        .hero-text h1 {
+            font-size: 3em;
+            font-weight: 700;
+        }
+        .hero-text p {
+            margin: 15px 0;
+            font-size: 1.2em;
+        }
+        .btn-hero {
+            text-decoration: none;
+            color: #fff;
+            background: #ff6f61;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        .btn-hero:hover {
+            background: #ff3d2e;
+        }
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        /* Featured Section Styling */
+        .featured {
+            padding: 50px;
+            text-align: center;
+            background: #f9f9f9;
+        }
+        .featured h2 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        .featured-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        .card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .card p {
+            font-size: 1em;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        .btn {
+            text-decoration: none;
+            color: #fff;
+            background: #007bff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        /* CTA Section Styling */
+        .cta {
+            padding: 50px;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+        }
+        .btn-cta {
+            text-decoration: none;
+            color: #fff;
+            background: #34d399;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        .btn-cta:hover {
+            background: #10b981;
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-layout">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <h2>Dev Hub</h2>
+            <ul>
+                <li><a href="#my-blog">My Blog</a></li>
+                <li><a href="#tech-docs">Tech Documents</a></li>
+                <li><a href="#dev-docs">Developer Docs</a></li>
+                <li><a href="main.html">← Back to Main Site</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-text">
+                    <h1>Welcome to the Developer Hub</h1>
+                    <p>Your one-stop destination for blog posts, tech tutorials, and developer documentation.</p>
+                    <a href="#my-blog" class="btn-hero">Get Started</a>
+                </div>
+                <div class="hero-image">
+                    <img src="assets/images/blog-hero.jpg" alt="Hero Image">
+                </div>
+            </section>
+
+            <!-- Featured Articles Section -->
+            <section class="featured" id="my-blog">
+                <h2>My Blog</h2>
+                <div class="featured-cards">
+                    <div class="card">
+                        <h3>Introductory Guide to Building an LLM</h3>
+                        <p>Learn how to build your own language model using Hugging Face, Python, and modern ML tools.</p>
+                        <a href="post-llm.html" class="btn">Read More</a>
+                    </div>
+                    <div class="card">
+                        <h3>Exploring Generative AI</h3>
+                        <p>Understanding the hype and limitations of generative AI technologies.</p>
+                        <a href="post2.html" class="btn">Read More</a>
+                    </div>
+                    <div class="card">
+                        <h3>Scaling Applications with Python</h3>
+                        <p>A deep dive into building scalable systems using Python and modern frameworks.</p>
+                        <a href="post3.html" class="btn">Read More</a>
+                    </div>
+                    <div class="card">
+                        <h3>Configuring Redis Using a ConfigMap</h3>
+                        <p>A step-by-step guide to configuring Redis in Kubernetes using ConfigMaps.</p>
+                        <a href="_posts/configure-redis-using-configmap.md" class="btn">Read More</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to Action Section -->
+            <section class="cta">
+                <h2>Want to Dive Deeper?</h2>
+                <p>Explore our comprehensive documentation and advanced tutorials to supercharge your projects.</p>
+                <a href="#dev-docs" class="btn-cta">Explore Documentation</a>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

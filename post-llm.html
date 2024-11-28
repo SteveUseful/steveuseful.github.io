@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introductory Guide to Building an LLM</title>
+    <link rel="stylesheet" href="assets/blog-pages.css">
+    <script src="assets/js/blog-interactivity.js" defer></script>
+</head>
+<body>
+    <div class="blog-post">
+        <!-- Navigation Back to Blog -->
+        <header class="post-header">
+            <a href="blog.html" class="back-link">← Back to Blog</a>
+            <h1>Introductory Guide to Building an LLM</h1>
+            <p class="post-meta">Published on November 19, 2024</p>
+        </header>
+
+        <!-- Language and Level Toggles -->
+        <div class="toggles">
+            <div class="language-toggle toggle-group">
+                <h3>Select Language:</h3>
+                <button class="toggle-btn active" data-language="python">Python</button>
+                <button class="toggle-btn" data-language="javascript">JavaScript</button>
+                <button class="toggle-btn" data-language="rust">Rust</button>
+            </div>
+            <div class="level-toggle toggle-group">
+                <h3>Select Developer Level:</h3>
+                <button class="toggle-btn active" data-level="beginner">Beginner</button>
+                <button class="toggle-btn" data-level="advanced">Advanced</button>
+                <button class="toggle-btn" data-level="expert">Expert</button>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="post-content">
+            <!-- Introduction -->
+            <section class="introduction">
+                <h2>Introduction</h2>
+                <p>
+                    Welcome to the Beginner’s Guide to Building an LLM (Large Language Model)! This guide will take you step by step through creating your first language model application. Even if you’re new to programming with machine learning tools, you’ll have a working program by the end of this guide.
+                </p>
+                <p>
+                    We’ll use <a href="https://huggingface.co/" target="_blank">Hugging Face’s Transformers</a>, a powerful library that provides pre-trained models like GPT-2. By following these steps, you’ll be able to generate text based on an input prompt. Let’s get started!
+                </p>
+            </section>
+
+            <!-- Step 1 -->
+            <section class="setup">
+                <h2>Step 1: Setting Up Your Environment</h2>
+
+                <p><strong>1. Install a Code Editor (Optional):</strong></p>
+                <p>If you don’t already have a code editor, we highly recommend using <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> (VS Code). It’s free, lightweight, and perfect for beginners.</p>
+                <ul>
+                    <li>Download and install Visual Studio Code from their official website.</li>
+                    <li>Once installed, open VS Code and create a new folder for your project. Name it <code>LLM_Project</code>.</li>
+                    <li>Inside this folder, create a new file and save it as <code>llm_app.py</code>. This is where we’ll write our Python code.</li>
+                </ul>
+
+                <p><strong>2. Install Python (Required):</strong></p>
+                <p>Ensure that Python is installed on your system. If you don’t have it, download the latest version from <a href="https://www.python.org/" target="_blank">python.org</a>. During installation, make sure to check the box that says <code>Add Python to PATH</code>.</p>
+
+                <p><strong>3. Install Required Libraries:</strong></p>
+                <p>Now that your environment is ready, install the libraries we’ll use:</p>
+                <pre class="short" data-language="python">
+<code>pip install transformers datasets torch</code>
+<button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                </pre>
+                <p>What do these libraries do?</p>
+                <ul>
+                    <li><strong><a href="https://huggingface.co/docs/transformers" target="_blank">Transformers:</a></strong> Provides pre-trained models like GPT-2 that are ready to use out of the box.</li>
+                    <li><strong><a href="https://huggingface.co/docs/datasets" target="_blank">Datasets:</a></strong> Helps you load and process datasets for machine learning tasks.</li>
+                    <li><strong><a href="https://pytorch.org/" target="_blank">PyTorch:</a></strong> A deep learning framework used for model computations.</li>
+                </ul>
+            </section>
+
+            <!-- Step 2 -->
+            <section class="example">
+                <h2>Step 2: Writing Your Python Script</h2>
+
+                <p><strong>1. Write the Code:</strong></p>
+                <p>Open your <code>llm_app.py</code> file and copy the following code. This script will load a pre-trained language model, prepare an input, and generate text:</p>
+
+                <pre data-language="python">
+<code>
+# Import the required libraries
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+# Load the GPT-2 model and tokenizer
+tokenizer = AutoTokenizer.from_pretrained("gpt2")
+model = AutoModelForCausalLM.from_pretrained("gpt2")
+
+# Define an input prompt
+prompt = "Once upon a time in AI,"
+
+# Convert the prompt into tokens
+inputs = tokenizer(prompt, return_tensors="pt")
+
+# Generate a continuation of the prompt
+outputs = model.generate(inputs["input_ids"], max_length=50)
+
+# Decode the generated text
+generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+# Print the output
+print(generated_text)
+</code>
+<button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                </pre>
+
+                <p><strong>Explanation:</strong></p>
+                <ul>
+                    <li><strong>Import libraries:</strong> Brings in the required Hugging Face components.</li>
+                    <li><strong>Load the model:</strong> Downloads and prepares GPT-2 for generating text.</li>
+                    <li><strong>Tokenize the prompt:</strong> Converts the input text into a format the model understands.</li>
+                    <li><strong>Generate text:</strong> Uses GPT-2 to predict and output the continuation of the input.</li>
+                    <li><strong>Decode output:</strong> Converts the tokens back into readable text.</li>
+                </ul>
+            </section>
+
+            <!-- Troubleshooting -->
+            <section class="troubleshooting">
+                <h2>Troubleshooting</h2>
+                <p>Having issues? Here are some common solutions:</p>
+                <details>
+                    <summary><strong>Out of Memory Error:</strong></summary>
+                    <p>Your system may not have enough memory to run GPT-2. Try reducing <code>max_length</code> in the code or use <a href="https://colab.research.google.com/" target="_blank">Google Colab</a> for free cloud resources.</p>
+                </details>
+                <details>
+                    <summary><strong>Model Not Found:</strong></summary>
+                    <p>Ensure you are connected to the internet when downloading the GPT-2 model.</p>
+                </details>
+                <details>
+                    <summary><strong>Python Version Issues:</strong></summary>
+                    <p>Check that you’re using Python 3.8 or higher. Run <code>python --version</code> in your terminal to verify.</p>
+                </details>
+            </section>
+        </article>
+
+        <!-- Footer -->
+        <footer class="post-footer">
+            <p>Written by SteveUseful | © 2024</p>
+        </footer>
+    </div>
+</body>
+</html>

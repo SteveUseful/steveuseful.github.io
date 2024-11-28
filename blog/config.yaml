@@ -1,0 +1,11 @@
+title: Steve's Developer Blog
+description: A blog for developers with guides and tutorials.
+baseurl: "" # GitHub Pages Root
+url: "https://steveuseful.github.io" # Replace with your GitHub Pages URL
+theme: minima # Built-in Jekyll theme for simplicity
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
