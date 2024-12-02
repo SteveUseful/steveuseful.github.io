@@ -11,7 +11,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 220px;
+    width: 180px;
     height: 100%;
     background: linear-gradient(to top, #230c33, #3d1256, #642b73);
     padding: 20px;
@@ -71,7 +71,7 @@ body {
 .portfolio-header {
     text-align: center;
     padding: 10px 10px;
-    background: linear-gradient(90deg, #ff7eb3, #a67bff, #7c4dff);
+    background: linear-gradient(90deg, #9e5674, #a67bff, #6738e7);
     background-size: 300% 300%; /* Makes the animation smoother */
     color: #ffffff;
     font-size: 2.8rem;
