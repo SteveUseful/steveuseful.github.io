@@ -1,0 +1,40 @@
+---
+layout: default
+title: "{{ page.title }}"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/blog-pages.css' | relative_url }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+</head>
+<body>
+    <div class="blog-layout">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <h2>Dev Hub</h2>
+            <ul>
+                <li><a href="/blog/home.html">Home</a></li>
+                <li><a href="#articles">Articles</a></li>
+                <li><a href="#examples">Real-World Examples</a></li>
+                <li><a href="/">← Back to Main Site</a></li>
+            </ul>
+        </nav>
+
+        <!-- Content -->
+        <main class="content">
+            <article>
+                <h1>{{ page.title }}</h1>
+                {{ content }}
+            </article>
+        </main>
+    </div>
+</body>
+</html>
+
+

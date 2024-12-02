@@ -1,13 +1,8 @@
 ---
 layout: default
-title: "Steve's Developer Blog"
-permalink: /blog/
+title: "Blog Landing Page"
 ---
 
-# Welcome to My Developer Blog
-
-Explore tutorials, guides, and resources for developers.
-
-{% for post in site.posts %}
-- [{{ post.title }}]({{ post.url | relative_url }}) - {{ post.date | date: "%B %d, %Y" }}
-{% endfor %}
+<h1>Welcome to the Developer Hub</h1>
+<p>Your one-stop destination for tutorials, real-world examples, and API integrations.</p>
+<a href="/blog" class="btn">Visit the Blog</a>

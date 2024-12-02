@@ -1,0 +1,74 @@
+---
+layout: default
+title: "Developer Hub"
+---
+
+<div class="blog-layout">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <h2>Dev Hub</h2>
+        <ul>
+            <li><a href="#articles">Articles</a></li>
+            <li><a href="#examples">Real-World Examples</a></li>
+            <li><a href="#api">API Development</a></li>
+            <li><a href="{{ site.baseurl }}/../index.html">← Back to Main Site</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1 class="glow">Welcome to the Developer Hub</h1>
+            <p>Your one-stop destination for tutorials, real-world examples, and API integrations.</p>
+        </div>
+
+        <!-- Articles Section -->
+        <section id="articles" class="grid-section">
+            <h2 class="section-title">Articles</h2>
+            <div class="grid">
+                {% for post in site.posts %}
+                <div class="card">
+                    <h3>{{ post.title }}</h3>
+                    <p>{{ post.excerpt | strip_html }}</p>
+                    <a href="{{ post.url | relative_url }}" class="btn">Learn More</a>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- Real-World Examples Section -->
+        <section id="examples" class="grid-section">
+            <h2 class="section-title">Real-World Examples</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>End-to-End Deployment with Kubernetes</h3>
+                    <p>A step-by-step example of deploying a full-stack application using Kubernetes.</p>
+                    <a href="#" class="btn">Read More</a>
+                </div>
+                <div class="card">
+                    <h3>API Gateway Integration</h3>
+                    <p>How to set up and integrate an API Gateway with microservices.</p>
+                    <a href="#" class="btn">Read More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- API Development Section -->
+        <section id="api" class="grid-section">
+            <h2 class="section-title">API Development</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Designing RESTful APIs</h3>
+                    <p>Best practices for designing scalable and maintainable REST APIs.</p>
+                    <a href="#" class="btn">Read More</a>
+                </div>
+                <div class="card">
+                    <h3>GraphQL vs REST</h3>
+                    <p>A comparison of GraphQL and REST API architectures.</p>
+                    <a href="#" class="btn">Read More</a>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>

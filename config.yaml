@@ -1,0 +1,13 @@
+title: "Steve's Developer Blog"
+description: "A blog for developers with guides and tutorials."
+baseurl: "/blog" # Use '/blog' to reflect your blog is served under /blog
+url: "http://127.0.0.1:4000" # Localhost for now; update this when deploying live
+markdown: kramdown
+exclude:
+  - .jekyll-cache
+  - _site
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+permalink: /:path/
+
